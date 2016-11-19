@@ -5,4 +5,5 @@
   roles:
     - general
     - nginx
-    - ruby
+    # - ruby
+    - node

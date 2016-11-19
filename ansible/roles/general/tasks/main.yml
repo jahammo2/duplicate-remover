@@ -1,4 +1,8 @@
 ---
+- name: apt-get update upgrade
+  apt: update_cache=yes  upgrade=safe
+  tags: [update, upgrade]
+
 - name: Install vim
   apt: name=vim state=present
 
