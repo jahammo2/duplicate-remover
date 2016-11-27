@@ -1,6 +1,6 @@
 class Home {
   constructor() {
-    this.tasks = ['foo', 'bar'];
+    this.tasks = ['foo', 'bar', 'abz'];
   }
 
   renderTasks() {
