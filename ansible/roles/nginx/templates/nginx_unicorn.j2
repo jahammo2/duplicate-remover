@@ -1,43 +1,7 @@
 server {
-  listen 80 default deferred;
-
-  root {{ app_path }};
-
-  location / {
-    try_files /index.html
-  }
-
-  if (-f $document_root/system/maintenance.html) {
-    return 503;
-  }
-  error_page 503 @maintenance;
-  location @maintenance {
-    rewrite  ^(.*)$  /system/maintenance.html last;
-    break;
-  }
-
-  location /docs {
-    index index.html;
-    alias /var/www/docs;
-  }
-
-  location ^~ /assets/ {
-    gzip_static on;
-    expires max;
-    add_header Cache-Control public;
-    root {{ app_path }}/public;
-  }
-
-  error_page 500 502 503 504 /500.html;
-  client_max_body_size 4G;
-  keepalive_timeout 10;
-
-  if (-f $document_root/system/maintenance.html) {
-    return 503;
-  }
-  error_page 503 @maintenance;
-  location @maintenance {
-    rewrite  ^(.*)$  /system/maintenance.html last;
-    break;
-  }
+    listen 80;
+    root {{ app_path }};
+    index index.html index.htm;
+    location / {
+    }
 }

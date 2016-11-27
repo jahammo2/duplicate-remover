@@ -28,4 +28,4 @@
 
 - name: Build FE
   command: chdir={{ app_path }}
-    bash -lc "npm build"
+    bash -lc "npm run build"
