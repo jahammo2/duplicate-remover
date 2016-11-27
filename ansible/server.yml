@@ -7,7 +7,7 @@
 
   roles:
     # - general
-    # - nginx
+    - nginx
     # - ruby
     # - node
-    - deploy
+    # - deploy

@@ -1,7 +1,7 @@
 - name: clone the app
   git: dest={{ app_path }}
        repo={{ app_repo }}
-       version=master
+       version="task/establish_front_end"
        accept_hostkey=true
        force=yes
 

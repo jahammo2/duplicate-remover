@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack --progress --colors",
-    "start": "NODE_ENV=production webpack-dev-server --port 8083 --progress --colors --watch -d",
+    "start": "NODE_ENV=production webpack-dev-server --port 8080 --progress --colors --watch -d",
     "test": "NODE_ENV=test webpack --progress --colors && node dist/test/bundle.js"
   },
   "author": "me",
