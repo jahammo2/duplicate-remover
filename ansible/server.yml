@@ -1,0 +1,9 @@
+---
+- hosts: local
+  remote_user: root
+
+  roles:
+    - general
+    - nginx
+    # - ruby
+    - node
