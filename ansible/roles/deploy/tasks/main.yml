@@ -1,14 +1,14 @@
 - name: clone the app
   git: dest={{ app_path }}
        repo={{ app_repo }}
-       version="task/establish_front_end"
+       version="master"
        accept_hostkey=true
        force=yes
 
 - name: Check if there are commited changes on master
   command: bash -lc "git fetch origin && git diff --name-only origin/master"
   args:
-    chdir: "{{app_path}}"
+    chdir: "{{ app_path }}"
   register: changes_on_remote
 
 - name: Inform User if there are no changes

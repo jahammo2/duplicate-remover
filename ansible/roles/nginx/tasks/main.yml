@@ -7,7 +7,7 @@
   when: ppastable|success
 
 - name: Configure App nginx
-  template: src=nginx_unicorn.j2 dest=/etc/nginx/sites-enabled/duplicate-remover
+  template: src=nginx_unicorn.j2 dest=/etc/nginx/sites-enabled/{{ app_name }}
 
 - name: restart nginx
   command: bash -lc "sudo service nginx restart"
