@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./src/index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="remover-container">
+        <h1>Duplicate Remover</h1>
+        <div class="emails-container">
+          <button
+            id="generatorButton"
+            type="button"
+            class="btn btn-primary"
+          >Generate Emails</button>
+
+          <div class="initial-emails-container">
+            <button
+              id="showHideInitialEmailsButton"
+              type="button"
+              class="btn btn-default btn-sm invisible"
+            >show/hide emails</button>
+            <div class="hidden" id="initialEmails" />
+          </div>
+
+          <div class="duplicate-remover-container">
+            <button
+              id="duplicateRemoverButton"
+              type="button"
+              class="btn btn-primary invisible"
+            >Remove Duplicate Emails</button>
+
+            <p id="totalTimeSentence"></p>
+
+            <button
+              id="showHideRemovedDuplicatesButton"
+              type="button"
+              class="btn btn-default btn-sm invisible"
+            >show/hide new email list</button>
+
+            <div class="hidden" id="removedDuplicatesList" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="dist/bundle.js" charset="utf-8"></script>
+  </body>
+</html>

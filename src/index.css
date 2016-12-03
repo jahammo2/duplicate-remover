@@ -1,0 +1,14 @@
+.remover-container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+* {
+  margin-bottom: 16px !important;
+}
+
+@media screen and (max-width: 480px) {
+  .remover-container {
+    width: 95%;
+  }
+}
