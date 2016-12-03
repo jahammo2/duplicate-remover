@@ -15,6 +15,11 @@ class EmailDuplicateRemover {
     this.totalTimeSentence = find('totalTimeSentence');
   }
 
+  fillHtml(emails, totalTime) {
+    this.list.innerHTML = emails.join(', ');
+    this.totalTimeSentence.innerHTML = `Duplicate removal completed in ${totalTime} milliseconds`;
+  }
+
   handleDuplicateRemoverClick() {
     // when `this` has to be called a bunch of times, I'll go ahead and assign it to a variable
     const self = this;
@@ -28,11 +33,6 @@ class EmailDuplicateRemover {
       const totalTime = t1 - t0;
       self.fillHtml(emails, totalTime);
     });
-  }
-
-  fillHtml(emails, totalTime) {
-    this.list.innerHTML = emails.join(', ');
-    this.totalTimeSentence.innerHTML = `Duplicate removal completed in ${totalTime} milliseconds`;
   }
 
   // This should probably be handled as a util but I'll keep it in this class for now

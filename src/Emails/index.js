@@ -18,6 +18,7 @@ class Emails {
 
     self.showHideButton.className = self.showHideButton.className.replace(/\invisible\b/,'');
     const promise = new Promise((resolve, reject) => resolve(generateEmails()));
+
     promise.then((emails) => {
       self.list.innerHTML = emails.join(', ');
       new EmailDuplicateRemover(emails).render();

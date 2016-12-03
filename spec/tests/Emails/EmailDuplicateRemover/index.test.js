@@ -5,6 +5,7 @@ import {
 } from '../../testHelpers';
 import EmailDuplicateRemover from '../../../../src/Emails/EmailDuplicateRemover';
 import * as utils from '../../../../utils';
+let actualValue;
 
 global.document = globalDocument;
 
@@ -17,7 +18,7 @@ testFramework.runTests(['EmailDuplicateRemover','removeDuplicates'], [
 
     return promise.then(() => {
       const t1 = utils.getTime();
-      const actualValue = t1-t0;
+      actualValue = t1-t0;
       const maxTime = 1000;
 
       testFramework.it(
@@ -33,7 +34,7 @@ testFramework.runTests(['EmailDuplicateRemover','removeDuplicates'], [
     const promise = new Promise((resolve) => resolve(emailDuplicateRemover.removeDuplicates()));
 
     return promise.then((newEmails) => {
-      const actualValue = newEmails;
+      actualValue = newEmails;
       const oldEmails = emails;
       testFramework.it(
         'returns it in the same order',

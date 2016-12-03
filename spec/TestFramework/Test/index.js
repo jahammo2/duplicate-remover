@@ -16,6 +16,13 @@ class Test {
     }
   }
 
+  isLessThan(max) {
+    return {
+      passed: this.actualValue < max,
+      errorMessage: `expected ${this.actualValue} to be less than ${max}`
+    }
+  }
+
   isOrderedAs(expectedValue) {
     // Since the duplicates that are removed are the ones that aren't the first instance, this test will suffice.
     // Example: the resulting array of [1,2,3,1] will be [1,2,3] so I only need to check that the first element in
@@ -27,13 +34,6 @@ class Test {
     return {
       passed: orderedCorrectly,
       errorMessage: 'the new array is ordered differently than the original'
-    }
-  }
-
-  isLessThan(max) {
-    return {
-      passed: this.actualValue < max,
-      errorMessage: `expected ${this.actualValue} to be less than ${max}`
     }
   }
 }

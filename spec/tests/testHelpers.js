@@ -18,8 +18,8 @@ const globalDocument = {
 };
 
 export {
-  Test,
-  testFramework,
+  globalDocument,
   removeWhiteSpace,
-  globalDocument
+  Test,
+  testFramework
 };

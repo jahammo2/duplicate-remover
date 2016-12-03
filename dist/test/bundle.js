@@ -70,7 +70,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var expectedValue = void 0;
 	var actualValue = void 0;
 
 	global.document = _testHelpers.globalDocument;
@@ -78,13 +77,10 @@
 	// Just to demostrate a basic test
 	_testHelpers.testFramework.runTests(['Emails', 'handleShowHideClick'], [function () {
 	  var emails = new _Emails2.default();
-	  emails.initialEmailsEl = {
-	    className: ''
-	  };
 	  emails.showing = true;
 	  emails.handleShowHideClick();
 	  actualValue = emails.showing;
-	  expectedValue = false;
+	  var expectedValue = false;
 
 	  _testHelpers.testFramework.it('changes showing to false if initially set to true', new _testHelpers.Test(actualValue).equals(expectedValue));
 	}]);
@@ -99,7 +95,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.globalDocument = exports.removeWhiteSpace = exports.testFramework = exports.Test = undefined;
+	exports.testFramework = exports.Test = exports.removeWhiteSpace = exports.globalDocument = undefined;
 
 	var _helpers = __webpack_require__(3);
 
@@ -129,10 +125,10 @@
 	  }
 	};
 
+	exports.globalDocument = globalDocument;
+	exports.removeWhiteSpace = _helpers.removeWhiteSpace;
 	exports.Test = _Test2.default;
 	exports.testFramework = testFramework;
-	exports.removeWhiteSpace = _helpers.removeWhiteSpace;
-	exports.globalDocument = globalDocument;
 
 /***/ },
 /* 3 */
@@ -165,9 +161,9 @@
 	  function Logger(spaces, text, color) {
 	    _classCallCheck(this, Logger);
 
+	    this.color = color;
 	    this.spaces = spaces;
 	    this.text = text;
-	    this.color = color;
 	  }
 
 	  _createClass(Logger, [{
@@ -225,6 +221,14 @@
 	      };
 	    }
 	  }, {
+	    key: 'isLessThan',
+	    value: function isLessThan(max) {
+	      return {
+	        passed: this.actualValue < max,
+	        errorMessage: 'expected ' + this.actualValue + ' to be less than ' + max
+	      };
+	    }
+	  }, {
 	    key: 'isOrderedAs',
 	    value: function isOrderedAs(expectedValue) {
 	      // Since the duplicates that are removed are the ones that aren't the first instance, this test will suffice.
@@ -237,14 +241,6 @@
 	      return {
 	        passed: orderedCorrectly,
 	        errorMessage: 'the new array is ordered differently than the original'
-	      };
-	    }
-	  }, {
-	    key: 'isLessThan',
-	    value: function isLessThan(max) {
-	      return {
-	        passed: this.actualValue < max,
-	        errorMessage: 'expected ' + this.actualValue + ' to be less than ' + max
 	      };
 	    }
 	  }]);
@@ -316,13 +312,13 @@
 	  var initialEmails = [];
 
 	  for (var ii = 2; ii > 0; ii--) {
-	    for (var i = 250; i > 0; i--) {
+	    for (var i = 25000; i > 0; i--) {
 	      emailAddress = "foo" + i + "@email.com";
 	      initialEmails.push(emailAddress);
 	    }
 	  }
 
-	  for (var _i = 500; _i > 0; _i--) {
+	  for (var _i = 50000; _i > 0; _i--) {
 	    emailAddress = "bar" + _i + "@email.com";
 	    initialEmails.push(emailAddress);
 	  }
@@ -358,8 +354,8 @@
 	  function TestFramework(logger) {
 	    _classCallCheck(this, TestFramework);
 
-	    this.testSpaces = 0;
 	    this.logger = logger;
+	    this.testSpaces = 0;
 	  }
 
 	  _createClass(TestFramework, [{
@@ -374,8 +370,8 @@
 	  }, {
 	    key: 'runTests',
 	    value: function runTests(descriptions, tests) {
-	      this.testSpaces = descriptions.length * 2;
 	      this.logDescriptions(descriptions);
+	      this.testSpaces = descriptions.length * 2;
 
 	      tests.forEach(function (test) {
 	        test();
@@ -504,6 +500,12 @@
 	  }
 
 	  _createClass(EmailDuplicateRemover, [{
+	    key: 'fillHtml',
+	    value: function fillHtml(emails, totalTime) {
+	      this.list.innerHTML = emails.join(', ');
+	      this.totalTimeSentence.innerHTML = 'Duplicate removal completed in ' + totalTime + ' milliseconds';
+	    }
+	  }, {
 	    key: 'handleDuplicateRemoverClick',
 	    value: function handleDuplicateRemoverClick() {
 	      // when `this` has to be called a bunch of times, I'll go ahead and assign it to a variable
@@ -520,12 +522,6 @@
 	        var totalTime = t1 - t0;
 	        self.fillHtml(emails, totalTime);
 	      });
-	    }
-	  }, {
-	    key: 'fillHtml',
-	    value: function fillHtml(emails, totalTime) {
-	      this.list.innerHTML = emails.join(', ');
-	      this.totalTimeSentence.innerHTML = 'Duplicate removal completed in ' + totalTime + ' milliseconds';
 	    }
 
 	    // This should probably be handled as a util but I'll keep it in this class for now
@@ -604,6 +600,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var actualValue = void 0;
+
 	global.document = _testHelpers.globalDocument;
 
 	_testHelpers.testFramework.runTests(['EmailDuplicateRemover', 'removeDuplicates'], [function () {
@@ -616,7 +614,7 @@
 
 	  return promise.then(function () {
 	    var t1 = utils.getTime();
-	    var actualValue = t1 - t0;
+	    actualValue = t1 - t0;
 	    var maxTime = 1000;
 
 	    _testHelpers.testFramework.it('finishes in under 1 second', new _testHelpers.Test(actualValue).isLessThan(maxTime));
@@ -629,7 +627,7 @@
 	  });
 
 	  return promise.then(function (newEmails) {
-	    var actualValue = newEmails;
+	    actualValue = newEmails;
 	    var oldEmails = emails;
 	    _testHelpers.testFramework.it('returns it in the same order', new _testHelpers.Test(actualValue).isOrderedAs(oldEmails));
 	  });

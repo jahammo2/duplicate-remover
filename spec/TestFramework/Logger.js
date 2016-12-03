@@ -1,8 +1,8 @@
 class Logger {
   constructor(spaces, text, color) {
+    this.color = color;
     this.spaces = spaces;
     this.text = text;
-    this.color = color;
   }
 
   createSentence() {

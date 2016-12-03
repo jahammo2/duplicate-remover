@@ -5,8 +5,8 @@ import {
 
 class TestFramework {
   constructor(logger) {
-    this.testSpaces = 0;
     this.logger = logger;
+    this.testSpaces = 0;
   }
 
   it(description, test) {
@@ -26,8 +26,8 @@ class TestFramework {
   }
 
   runTests(descriptions, tests) {
-    this.testSpaces = descriptions.length * 2;
     this.logDescriptions(descriptions);
+    this.testSpaces = descriptions.length * 2;
 
     tests.forEach((test) => {
       test();

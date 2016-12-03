@@ -4,7 +4,6 @@ import {
   testFramework
 } from '../testHelpers';
 import Emails from '../../../src/Emails';
-let expectedValue;
 let actualValue;
 
 global.document = globalDocument;
@@ -13,13 +12,10 @@ global.document = globalDocument;
 testFramework.runTests(['Emails','handleShowHideClick'], [
   () => {
     const emails = new Emails();
-    emails.initialEmailsEl = {
-     className: ''
-    };
     emails.showing = true;
     emails.handleShowHideClick();
     actualValue = emails.showing;
-    expectedValue = false;
+    const expectedValue = false;
 
     testFramework.it(
       'changes showing to false if initially set to true',
