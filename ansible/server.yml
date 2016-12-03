@@ -1,5 +1,5 @@
 ---
-- hosts: local
+- hosts: all
   remote_user: root
 
   roles:
@@ -7,3 +7,4 @@
     - nginx
     # - ruby
     - node
+    - deploy
