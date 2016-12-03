@@ -7,7 +7,4 @@
     - nginx
     # - ruby
     - node
-<<<<<<< HEAD
     - deploy
-=======
->>>>>>> master
