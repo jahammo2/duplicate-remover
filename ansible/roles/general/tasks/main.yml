@@ -8,6 +8,3 @@
 
 - name: Install git
   apt: name=git-core state=present
-
-- name: Create app path
-  file: path={{ app_path }} state=directory mode=0755
